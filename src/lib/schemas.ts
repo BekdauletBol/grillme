@@ -18,7 +18,7 @@ export const AnalysisSchema = z.object({
       "Dense, faithful study notes of everything examinable in the material: definitions, formulas, mechanisms, cause-effect chains, examples, edge cases. 600-1800 words. This is the ONLY source the examiner will see later, so do not omit important facts.",
     ),
   topics: z.array(TopicSchema).describe("4-7 examinable topics, ordered as in the material"),
-  firstQuestion: z.string().describe("an opening question on the first topic"),
+  firstQuestion: z.string().describe("an opening question on the first topic: one short spoken sentence, max ~25 words"),
   firstTopicId: z.string(),
 });
 
@@ -40,7 +40,7 @@ export const TurnSchema = z.object({
   topicId: z.string().describe("id of the topic the answered question belonged to"),
   nextQuestion: z
     .string()
-    .describe("the next question to ask, one sentence, spoken style. Empty string if the exam is over."),
+    .describe("the next question to ask: one short spoken sentence (max ~25 words). Empty string if the exam is over."),
   nextTopicId: z.string().describe("topic id of nextQuestion, empty if exam is over"),
   nextIsFollowUp: z
     .boolean()
